@@ -71,13 +71,4 @@ public class UserService {
         return userByUsernameOptional.isPresent();
     }
 
-    void saveUserToken(String username, String token) {
-        final Optional<User> optionalUser = userRepository.findByUsername(username);
-        if (!optionalUser.isPresent()) {
-            throw new UsernameNotFoundException(username);
-        }
-        final User user = optionalUser.get();
-        user.setToken(token);
-        userRepository.save(user);
-    }
 }

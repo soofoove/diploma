@@ -7,23 +7,18 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
-
 import static com.university.contractors.config.SecurityConstants.TOKEN_PREFIX;
 import static org.apache.commons.lang3.StringUtils.SPACE;
 
 @Service
 public class AuthorizationService {
 
-    private final UserService userService;
     private final TokenParser tokenParser;
     private final ContractorsUserDetailService contractorsUserDetailService;
 
     @Autowired
-    public AuthorizationService(UserService userService,
-                                ContractorsUserDetailService contractorsUserDetailService,
+    public AuthorizationService(ContractorsUserDetailService contractorsUserDetailService,
                                 TokenParser tokenParser) {
-        this.userService = userService;
         this.contractorsUserDetailService = contractorsUserDetailService;
         this.tokenParser = tokenParser;
     }
@@ -34,11 +29,6 @@ public class AuthorizationService {
 
         final UserDetails userDetails = contractorsUserDetailService.loadUserByUsername(username);
         final User user = contractorsUserDetailService.loadCustomUserByUsername(username);
-
-        final String storedUserToken = user.getToken();
-        if (Objects.isNull(storedUserToken) || ObjectUtils.notEqual(storedUserToken, token)) {
-            throw new InvalidTokenException();
-        }
 
         return new UsernamePasswordAuthenticationToken(user, null, userDetails.getAuthorities());
     }

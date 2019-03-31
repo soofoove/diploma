@@ -12,18 +12,14 @@ import static com.university.contractors.config.SecurityConstants.DEFAULT_EXPIRA
 @Service
 public class AuthenticationService {
     private final TokenBuilder tokenBuilder;
-    private final UserService userService;
 
     @Autowired
-    public AuthenticationService(TokenBuilder tokenBuilder, UserService userService) {
+    public AuthenticationService(TokenBuilder tokenBuilder) {
         this.tokenBuilder = tokenBuilder;
-        this.userService = userService;
     }
 
     public String processSuccessfulAuthentication(String username) {
         final ZonedDateTime tokenExpirationTime = ZonedDateTime.now(ZoneOffset.UTC).plus(DEFAULT_EXPIRATION_TIME, ChronoUnit.MILLIS);
-        final String token = tokenBuilder.buildToken(username, tokenExpirationTime);
-        userService.saveUserToken(username, token);
-        return token;
+        return tokenBuilder.buildToken(username, tokenExpirationTime);
     }
 }
