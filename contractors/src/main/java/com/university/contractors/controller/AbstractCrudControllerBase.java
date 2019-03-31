@@ -18,7 +18,7 @@ public abstract class AbstractCrudControllerBase<I, E extends IdEntity<I>> {
         this.crudRepository = crudRepository;
     }
 
-    public E getById(I id) {
+    E getById(I id) {
         Optional<E> optionalEntityById = crudRepository.findById(id);
 
         if (!optionalEntityById.isPresent()) {
@@ -29,15 +29,15 @@ public abstract class AbstractCrudControllerBase<I, E extends IdEntity<I>> {
         return optionalEntityById.get();
     }
 
-    public Iterable<E> getAll() {
+    Iterable<E> getAll() {
         return crudRepository.findAll();
     }
 
-    public E create(E entityToCreate) {
+    E create(E entityToCreate) {
         return crudRepository.save(entityToCreate);
     }
 
-    public E update(I id, E entityToUpdateWith) {
+    E update(I id, E entityToUpdateWith) {
         final I entityId = entityToUpdateWith.getId();
 
         if (Objects.isNull(entityId)) {
@@ -53,7 +53,7 @@ public abstract class AbstractCrudControllerBase<I, E extends IdEntity<I>> {
         return crudRepository.save(entityToUpdateWith);
     }
 
-    public void delete(I id) {
+    void delete(I id) {
         boolean isEntityWithGivenIdExists = crudRepository.existsById(id);
 
         if (!isEntityWithGivenIdExists) {
