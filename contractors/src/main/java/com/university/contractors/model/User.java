@@ -24,8 +24,6 @@ public class User implements IdEntity<Long> {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
-    private String token;
-
     @Override
     public Long getId() {
         return id;
@@ -58,14 +56,6 @@ public class User implements IdEntity<Long> {
 
     public void setUserRole(UserRole userRole) {
         this.userRole = userRole;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     @Override
