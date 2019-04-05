@@ -20,13 +20,14 @@
     docker run  -p 1433:1433 <IMAGE_ID>
     ```
 
-### How to setup development enviroment.
+### How to setup development environment
 #### Prerequriments:
 - Git (https://www.atlassian.com/git/tutorials/install-git#windows)
 - JDK 1.8 or higher (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - IntelliJ IDEA (https://www.jetbrains.com/idea/download/)
 
-1. Clone the repostiry 
+#### Steps to import project
+1. Clone the repository 
 ``` 
 git clone git@github.com:olegbarmin/diploma.git 
 ``` 
