@@ -32,7 +32,7 @@ git clone git@github.com:olegbarmin/diploma.git
 ``` 
 2. Open IDEA
 3. Select 'Import Project' option
-![project](tutorial/resources/Annotation%202019-04-05%20191033.jpg)
+![project](tutorial/resources/import_project.jpg)
 4. Select `<project_root>/diploma/contractors` folder
 5. Select 'Import project from external model' -> 'Gradle' and press 'Next'
 ![import](tutorial/resources/wrapper.jpg)
@@ -45,7 +45,7 @@ git clone git@github.com:olegbarmin/diploma.git
 9. Verify that you project view looks the same:
 ![project_structure](tutorial/resources/project_strucute.jpg)
 10. Run tests, by right clicking on 'java' folder in 'test' package:
-![run_tests](tutorial/resources/Annotation%202019-04-05%20192724.jpg)
+![run_tests](tutorial/resources/run_tests.jpg)
 11. Verify tests done successfully:
 ![tests](tutorial/resources/testing_done.jpg)
 10. Done.
