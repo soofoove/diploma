@@ -67,8 +67,7 @@ public class UserService {
     }
 
     private boolean usernameIsNotUnique(String username) {
-        final Optional<User> userByUsernameOptional = userRepository.findByUsername(username);
-        return userByUsernameOptional.isPresent();
+        return userRepository.findByUsername(username).isPresent();
     }
 
 }

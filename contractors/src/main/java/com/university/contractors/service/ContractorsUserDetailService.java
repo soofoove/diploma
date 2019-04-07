@@ -8,8 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class ContractorsUserDetailService implements UserDetailsService {
 
@@ -22,26 +20,11 @@ public class ContractorsUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final Optional<User> userOptional = userRepository.findByUsername(username);
-
-        if (!userOptional.isPresent()) {
-            throw new UsernameNotFoundException(String.format("User with username '%s' was not found.", username));
-        }
-
-        final User user = userOptional.get();
+        final User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username));
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPasswordHash(),
                 AuthorityUtils.createAuthorityList(user.getUserRole().getValue()));
 
-    }
-
-    public User loadCustomUserByUsername(String username) {
-        final Optional<User> userByUsername = userRepository.findByUsername(username);
-
-        if (!userByUsername.isPresent()) {
-            throw new UsernameNotFoundException(String.format("User with username '%s' was not found", username));
-        }
-
-        return userByUsername.get();
     }
 }

@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Objects;
-import java.util.Optional;
 
 
 public abstract class AbstractCrudControllerBase<I, E extends IdEntity<I>> {
@@ -19,14 +18,8 @@ public abstract class AbstractCrudControllerBase<I, E extends IdEntity<I>> {
     }
 
     E getById(I id) {
-        Optional<E> optionalEntityById = crudRepository.findById(id);
-
-        if (!optionalEntityById.isPresent()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                    "Entity with ID '%s' was not found.");
-        }
-
-        return optionalEntityById.get();
+        return crudRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Entity with ID '%s' was not found."));
     }
 
     Iterable<E> getAll() {

@@ -2,8 +2,8 @@ package com.university.contractors.controller;
 
 import com.university.contractors.config.Endpoints;
 import com.university.contractors.controller.payload.SearchStudent;
+import com.university.contractors.model.SearchStudentResult;
 import com.university.contractors.repository.SearchStudentRepository;
-import com.university.contractors.repository.SearchStudentResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

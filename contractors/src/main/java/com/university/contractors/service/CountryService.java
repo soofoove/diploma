@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CountryService {
@@ -22,18 +21,15 @@ public class CountryService {
 
 
     public Country getLocalCountry() {
-        final List<Country> conuntryList = countryRepository.findByCountryNameEng(LOCAL_COUNTRY_ENG_NAME);
+        final List<Country> countryList = countryRepository.findByCountryNameEng(LOCAL_COUNTRY_ENG_NAME);
 
-        if (conuntryList.size() > 1) {
+        if (countryList.size() > 1) {
             throw new RuntimeException("There more than one country with name: '" + LOCAL_COUNTRY_ENG_NAME + "'");
         }
 
-        final Optional<Country> optionalCountry = conuntryList.stream().findFirst();
-
-        if (!optionalCountry.isPresent()) {
-            throw new RuntimeException("Local country with name: '" + LOCAL_COUNTRY_ENG_NAME + "' was not found in the database");
-        }
-
-        return optionalCountry.get();
+        return countryList.stream()
+                .findFirst()
+                .orElseThrow(() ->
+                        new RuntimeException("Local country with name: '" + LOCAL_COUNTRY_ENG_NAME + "' was not found in the database"));
     }
 }

@@ -5,6 +5,7 @@ import com.university.contractors.controller.payload.Nationality;
 import com.university.contractors.controller.payload.SearchStudent;
 import com.university.contractors.model.Contract;
 import com.university.contractors.model.Country;
+import com.university.contractors.model.SearchStudentResult;
 import com.university.contractors.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
