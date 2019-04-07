@@ -31,11 +31,6 @@ public final class UserBuilder {
         return this;
     }
 
-    public UserBuilder token(String token) {
-        user.setToken(token);
-        return this;
-    }
-
     public User build() {
         return user;
     }
