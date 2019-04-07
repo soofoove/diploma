@@ -49,7 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers(Endpoints.LOGIN).permitAll()
                 .antMatchers(Endpoints.SIGN_UP).permitAll()
-                .antMatchers(Endpoints.ENTITY_PREFIX + "/**").hasAnyAuthority(UserRole.USER.getValue(), UserRole.ADMIN.getValue())
+                .antMatchers(Endpoints.AUTH_ENDPOINTS_PREFIX + "/**").hasAnyAuthority(UserRole.USER.getValue(), UserRole.ADMIN.getValue())
 
                 .and()
                 .addFilter(authenticationFilter)

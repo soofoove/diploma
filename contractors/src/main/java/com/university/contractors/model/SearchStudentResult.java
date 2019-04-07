@@ -1,6 +1,4 @@
-package com.university.contractors.repository;
-
-import com.university.contractors.model.*;
+package com.university.contractors.model;
 
 public class SearchStudentResult {
 

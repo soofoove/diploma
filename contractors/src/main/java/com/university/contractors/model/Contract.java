@@ -5,6 +5,7 @@ import com.google.common.base.Objects;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Contract implements IdEntity<Long> {
@@ -27,9 +28,11 @@ public class Contract implements IdEntity<Long> {
     private Float contractValue;
     private String contractNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "ref_order_project")
-    private Order order;
+    @ManyToMany
+    @JoinTable(name = "contract_order",
+            joinColumns = {@JoinColumn(name = "ref_contract")},
+            inverseJoinColumns = {@JoinColumn(name = "ref_order")})
+    private List<Order> order;
 
     @ManyToOne
     @JoinColumn(name = "ref_dedact_order_project")
@@ -132,11 +135,11 @@ public class Contract implements IdEntity<Long> {
         this.contractNumber = contractNumber;
     }
 
-    public Order getOrder() {
+    public List<Order> getOrders() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(List<Order> order) {
         this.order = order;
     }
 
