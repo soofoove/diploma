@@ -9,7 +9,7 @@
 1. Setup docker([macOS](https://docs.docker.com/docker-for-mac/install) / [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/))
 2. Pull image with database by executing following command:
     ```
-    docker pull olegbarmin/diploma:latest
+    docker pull olegbarmin/diploma:DEVELOPMENT
     ```
 3. Find ID of downloaded image by executing:
     ```
