@@ -1,6 +1,7 @@
 package com.university.contractors.service;
 
 import com.university.contractors.model.User;
+import com.university.contractors.repository.UserRepository;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,12 +16,16 @@ public class AuthorizationService {
 
     private final TokenParser tokenParser;
     private final ContractorsUserDetailService contractorsUserDetailService;
+    private final UserRepository userRepository;
+
 
     @Autowired
     public AuthorizationService(ContractorsUserDetailService contractorsUserDetailService,
-                                TokenParser tokenParser) {
+                                TokenParser tokenParser,
+                                UserRepository userRepository) {
         this.contractorsUserDetailService = contractorsUserDetailService;
         this.tokenParser = tokenParser;
+        this.userRepository = userRepository;
     }
 
     public UsernamePasswordAuthenticationToken getAuthenticationToken(String headerValue) {
@@ -28,7 +33,7 @@ public class AuthorizationService {
         final String username = tokenParser.getUsernameFormToken(token);
 
         final UserDetails userDetails = contractorsUserDetailService.loadUserByUsername(username);
-        final User user = contractorsUserDetailService.loadCustomUserByUsername(username);
+        final User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
 
         return new UsernamePasswordAuthenticationToken(user, null, userDetails.getAuthorities());
     }

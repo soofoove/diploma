@@ -17,6 +17,9 @@ public interface Endpoints {
     // Search
     String SEARCH = ENDPOINTS_PREFIX + "/search";
 
+    // Student Card
+    String STUDENT_CARD = ENDPOINTS_PREFIX + "/student/card" + ID_PARAMETER;
+
     // CRUD entities
     String STUDENTS = ENTITY_PREFIX + "/students";
     String STUDENT_BY_ID = STUDENTS + ID_PARAMETER;

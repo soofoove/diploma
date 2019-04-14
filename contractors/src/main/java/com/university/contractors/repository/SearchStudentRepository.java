@@ -5,6 +5,7 @@ import com.university.contractors.controller.payload.Nationality;
 import com.university.contractors.controller.payload.SearchStudent;
 import com.university.contractors.model.Contract;
 import com.university.contractors.model.Country;
+import com.university.contractors.model.SearchStudentResult;
 import com.university.contractors.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,6 +20,8 @@ import java.util.Objects;
 
 @Repository
 public class SearchStudentRepository {
+
+    private static final String LIKE_ENDING = "%";
 
     private final EntityManager entityManager;
     private final CountryService countryService;
@@ -48,13 +51,13 @@ public class SearchStudentRepository {
         predicateList.add(criteriaBuilder.equal(contractRoot.get("isActive"), Boolean.TRUE));
 
         if (Objects.nonNull(searchStudent.getSurname())) {
-            predicateList.add(criteriaBuilder.equal(contractRoot.get("student").get("surname"),
-                    searchStudent.getSurname()));
+            predicateList.add(criteriaBuilder.like(contractRoot.get("student").get("surname"),
+                    searchStudent.getSurname() + LIKE_ENDING));
         }
 
         if (Objects.nonNull(searchStudent.getName())) {
-            predicateList.add(criteriaBuilder.equal(contractRoot.get("student").get("name"),
-                    searchStudent.getName()));
+            predicateList.add(criteriaBuilder.like(contractRoot.get("student").get("name"),
+                    searchStudent.getName() + LIKE_ENDING));
         }
 
         if (Objects.nonNull(searchStudent.getDataOfBirth())) {
