@@ -1,0 +1,115 @@
+<form #searchForm="ngForm" (ngSubmit)="submitSearch(searchForm)">
+  <table class="searchTable">
+      <tr>
+          <td>
+              Фамилия
+              <input name="lastNameIn" ngModel #lastName="ngModel"/>  
+          </td>
+          <td>
+              Факультет
+              <select name="facultyCB" ngModel #faculty="ngModel">
+                  <option *ngFor="let faculty of facultyList" value={{faculty}}>{{faculty}}</option>
+              </select>
+          </td>
+          <td>
+              <button type="submit" [disabled]="!searchForm.valid">Найти</button>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Имя
+              <input name="firstNameIn" ngModel #firstName="ngModel"/>  
+          </td>
+          <td>
+              Образ. программа
+              <select name="educProgCB" ngModel #educProg="ngModel">
+                  <option *ngFor="let prog of educProgList" value={{prog}}>{{prog}}</option>
+              </select>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Дата рождения
+              <input name="birthDateIn" ngModel #birthDate="ngModel" placeholder="__/__/____"/>  
+          </td>
+          <td>
+              Программа
+              <select name="progCB" ngModel #prog="ngModel">
+                  <option *ngFor="let prog of progList" value={{prog}}>{{prog}}</option>
+              </select>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Национальность
+              <select name="nacionalityCB" ngModel #nacionality="ngModel">
+                  <option *ngFor="let nacionality of nacionalityList" value={{nacionality}}>{{nacionality}}</option>
+              </select>
+          </td>
+          <td>
+              Уровень
+              <select name="levelCB" ngModel #level="ngModel">
+                  <option *ngFor="let level of levelList" value={{level}}>{{level}}</option>
+              </select>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Страна
+              <select name="countryCB" ngModel #country="ngModel">
+                  <option *ngFor="let country of countryList" value={{country}}>{{country}}</option>
+              </select>
+          </td>
+          <td>
+              Форма обучения
+              <select name="edFormCB" ngModel #edForm="ngModel">
+                  <option *ngFor="let form of edFormList" value={{form}}>{{form}}</option>
+              </select>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Номер контракта
+              <input name="contractNumIn" ngModel #contractNum="ngModel"/>  
+          </td>
+          <td>
+              Линия прибытия
+              <select name="arrLineCB" ngModel #arrLine="ngModel">
+                  <option *ngFor="let line of arrLineList" value={{line}}>{{line}}</option>
+              </select>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Курс
+              <select name="gradeCB" ngModel #grade="ngModel">
+                  <option *ngFor="let grade of gradeList" value={{grade}}>{{grade}}</option>
+              </select>
+          </td>
+          <td>
+              Язык преподавания
+              <select name="langCB" ngModel #lang="ngModel">
+                  <option *ngFor="let lang of langList" value={{lang}}>{{lang}}</option>
+              </select>
+          </td>
+      </tr>
+  </table>
+  
+  <table class="resultTable" border="1">
+      <tr>
+          <th>№</th>
+          <th>Ф.И.О.</th>
+          <th>Контракт</th>
+          <th>Страна</th>
+          <th>Курс</th>
+          <th>Форма обуч.</th>
+          <th>Факультет</th>
+          <th>Образ. программа</th>
+          <th>Уровень</th>
+      </tr>
+      <tr *ngFor="let resultTuple of resultsArray; let i = index;">
+          <td>{{i+1}}</td>
+          <td *ngFor="let value of resultTuple">{{value}}</td>
+      </tr>
+  </table>
+</form>
