@@ -7,10 +7,7 @@ public interface Endpoints {
     String API_VERSION_PREFIX = "/v1";
     String ENDPOINTS_PREFIX = API_PREFIX + API_VERSION_PREFIX;
 
-    String AUTH_PREFIX = "/auth";
-    String AUTH_ENDPOINTS_PREFIX = ENDPOINTS_PREFIX + AUTH_PREFIX;
-
-    String ENTITY_PREFIX = AUTH_ENDPOINTS_PREFIX + "/entity";
+    String ENTITY_PREFIX = ENDPOINTS_PREFIX + "/entity";
     String ID_PARAMETER = "/{id}";
 
     // Login/SignUp
@@ -18,10 +15,10 @@ public interface Endpoints {
     String SIGN_UP = ENDPOINTS_PREFIX + "/signUp";
 
     // Search
-    String SEARCH = AUTH_ENDPOINTS_PREFIX + "/search";
+    String SEARCH = ENDPOINTS_PREFIX + "/search";
 
     // Student Card
-    String STUDENT_CARD = AUTH_ENDPOINTS_PREFIX + "/student/card" + ID_PARAMETER;
+    String STUDENT_CARD = ENDPOINTS_PREFIX + "/student/card" + ID_PARAMETER;
 
     // CRUD entities
     String STUDENTS = ENTITY_PREFIX + "/students";
