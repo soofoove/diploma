@@ -2,8 +2,8 @@ package com.university.contractors.config;
 
 import com.university.contractors.service.AuthorizationService;
 import com.university.contractors.service.InvalidTokenException;
-import com.university.contractors.service.MalformedTokenException;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,7 +33,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         } catch (UsernameNotFoundException | ExpiredJwtException | InvalidTokenException exception) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             writeResponseBody(response, exception.getMessage());
-        } catch (MalformedTokenException exception) {
+        } catch (JwtException exception) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             writeResponseBody(response, exception.getMessage());
         }
