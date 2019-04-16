@@ -45,6 +45,9 @@ public interface Endpoints {
     String EDUCATION_LEVELS = ENTITY_PREFIX + "/education_levels";
     String EDUCATION_LEVEL_BY_ID = EDUCATION_LEVELS + ID_PARAMETER;
 
+    String EDUCATION_LANGUAGE = ENTITY_PREFIX + "/education_languages";
+    String EDUCATION_LANGUAGE_BY_ID = EDUCATION_LANGUAGE + ID_PARAMETER;
+
     String FACULTIES = ENTITY_PREFIX + "/faculties";
     String FACULTY_BY_ID = FACULTIES + ID_PARAMETER;
 
