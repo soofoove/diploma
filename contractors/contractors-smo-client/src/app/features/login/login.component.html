@@ -1,0 +1,18 @@
+<div class="login-container">
+  <form [formGroup]="loginForm" class="form-signin" (ngSubmit)="onSubmit()" ngNativeValidate >
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input formControlName="username" type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <!-- <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div> -->
+    <div *ngIf="loginSuccess === false" class="alert alert-danger" role="alert">
+      <strong>Error:</strong> Invalid credentials
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+</div>
