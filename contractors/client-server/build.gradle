@@ -24,13 +24,45 @@ repositories {
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.2.RELEASE'
 }
-bootJar {
-    mainClassName = 'com.university.contractors.client.server.ClientServerApplication'
+
+private static String getClientModuleName(String clientArgumentValue) {
+    final String result
+    if (clientArgumentValue == "smo") {
+        result = ":contractors-client"
+    } else if (clientArgumentValue == "oko") {
+        result = ":contractors-oko-client"
+    } else {
+        throw new StopExecutionException('Unknown "client" argument value: "' + clientArgumentValue + '". Possible values are: "oko", "smo".')
+    }
+    return result
 }
 
-task copyStaticResources (type: Copy){
-    from(project(':contractors-client').projectDir.absolutePath + '/dist/dimplom-test/') into('build/resources/main/static')
+private static void deleteStaticDirectory() {
+    def staticDirectory = new File('build/resources/main/static')
+    staticDirectory.deleteDir()
 }
 
-bootJar.dependsOn(':contractors-client:npm_run_build')
-bootJar.dependsOn(copyStaticResources)
+if (project.hasProperty('client')) {
+
+    task copyStaticResources(type: Copy) {
+        def clientArgumentValue = project.getProperties()['client']
+        getClientModuleName(clientArgumentValue);
+        from(project(':contractors-client').projectDir.absolutePath + '/dist/dimplom-test/') into('build/resources/main/static')
+    }
+
+    def clientArgumentValue = project.getProperties()['client']
+    def clientModuleName = getClientModuleName(clientArgumentValue)
+
+    if (clientArgumentValue == "smo") {
+        print("Building SMO client...")
+        bootJar.dependsOn(clientModuleName + ':npm_run_build')
+    } else if (clientArgumentValue == "oko") {
+        print("Building OKO client...")
+        bootJar.dependsOn(clientModuleName + ':npm_run_build')
+    } else {
+        throw new StopExecutionException('Unknown "client" argument value: "' + clientArgumentValue + '". Possible values are: "oko", "smo".')
+    }
+
+    deleteStaticDirectory()
+    bootJar.dependsOn(copyStaticResources)
+}
