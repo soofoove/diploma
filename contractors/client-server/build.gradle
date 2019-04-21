@@ -27,10 +27,10 @@ dependencies {
 
 private static String getClientModuleName(String clientArgumentValue) {
     final String result
-    if (clientArgumentValue == "smo") {
+    if (clientArgumentValue == "oko") {
         result = ":contractors-client"
-    } else if (clientArgumentValue == "oko") {
-        result = ":contractors-oko-client"
+    } else if (clientArgumentValue == "smo") {
+        result = ":contractors-smo-client"
     } else {
         throw new StopExecutionException('Unknown "client" argument value: "' + clientArgumentValue + '". Possible values are: "oko", "smo".')
     }
@@ -46,8 +46,8 @@ if (project.hasProperty('client')) {
 
     task copyStaticResources(type: Copy) {
         def clientArgumentValue = project.getProperties()['client']
-        getClientModuleName(clientArgumentValue);
-        from(project(':contractors-client').projectDir.absolutePath + '/dist/dimplom-test/') into('build/resources/main/static')
+        def clientModlueName = getClientModuleName(clientArgumentValue);
+        from(project(clientModlueName).projectDir.absolutePath + '/dist/dimplom-test/') into('build/resources/main/static')
     }
 
     def clientArgumentValue = project.getProperties()['client']
@@ -64,5 +64,6 @@ if (project.hasProperty('client')) {
     }
 
     deleteStaticDirectory()
+    archivesBaseName = project.name + "-" + clientArgumentValue
     bootJar.dependsOn(copyStaticResources)
 }
