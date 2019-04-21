@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OkoApplication {
+public class ClientServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OkoApplication.class, args);
+        SpringApplication.run(ClientServerApplication.class, args);
     }
 }
