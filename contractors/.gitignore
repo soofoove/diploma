@@ -2,3 +2,6 @@
 /.gradle/
 /out/
 /contractors-server/out/
+/contractors-client/node_modules/
+/contractors-smo-client/node_modules/
+/contractors-client/dist/
