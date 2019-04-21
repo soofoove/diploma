@@ -1,4 +1,4 @@
-package com.university.contractors.client.oko;
+package com.university.contractors.client.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

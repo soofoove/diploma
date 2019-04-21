@@ -1,4 +1,4 @@
-package com.university.contractors.client.oko;
+package com.university.contractors.client.server;
 
 import java.io.IOException;
 
