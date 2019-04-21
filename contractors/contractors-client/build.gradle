@@ -1,32 +1,6 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
-    }
-}
-
 plugins {
-    id 'com.moowork.node' version '1.2.0'
-}
-
-apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-group 'com.university'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.2.RELEASE'
+    id 'java'
+    id "com.moowork.node" version "1.2.0"
 }
 
 node {
@@ -35,18 +9,8 @@ node {
     download = true
 }
 
-//bootJar.dependsOn 'npm_run_build'
+jar.dependsOn 'npm_run_build'
 
-processResources {
-    from ('dist/dimplom-test/') {
-        into 'static'
-    }
-}
-
-bootJar {
-    mainClassName = 'com.university.contractors.client.oko.OkoApplication'
-}
-
-task copyStaticResources (dependsOn: bootJar, type: Copy) {
-    from 'dist/dimplom-tes' into 'static'
+jar {
+    from 'dist/dimplom-test' into 'static'
 }
