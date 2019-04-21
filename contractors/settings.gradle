@@ -1,6 +1,6 @@
 rootProject.name = 'contractors'
-include 'contractors-server'
-include 'contractors-client'
-include 'contractors-smo-client'
+include 'server'
+include 'oko-client'
+include 'smo-client'
 include 'client-server'
 

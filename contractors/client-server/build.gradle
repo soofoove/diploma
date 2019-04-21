@@ -28,9 +28,9 @@ dependencies {
 private static String getClientModuleName(String clientArgumentValue) {
     final String result
     if (clientArgumentValue == "oko") {
-        result = ":contractors-client"
+        result = ":oko-client"
     } else if (clientArgumentValue == "smo") {
-        result = ":contractors-smo-client"
+        result = ":smo-client"
     } else {
         throw new StopExecutionException('Unknown "client" argument value: "' + clientArgumentValue + '". Possible values are: "oko", "smo".')
     }
