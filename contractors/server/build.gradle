@@ -7,7 +7,6 @@ buildscript {
     }
 }
 
-
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
@@ -41,8 +40,4 @@ dependencies {
     testCompile group: 'com.h2database', name: 'h2', version: '1.4.197'
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.2.RELEASE'
     testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.3.0'
-
-//    compile project(':contractors-client')
-    compile project(':contractors-smo-client')
-
 }

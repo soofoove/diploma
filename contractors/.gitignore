@@ -1,4 +1,8 @@
 /.idea/
 /.gradle/
 /out/
-/contractors-server/out/
+/oko-client/out/
+/oko-client/node_modules/
+/smo-client/node_modules/
+/oko-client/dist/
+/smo-client/dist/
