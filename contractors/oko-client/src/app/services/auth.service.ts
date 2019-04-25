@@ -11,10 +11,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-
-  // TODO: Enable logging in when get access to server
-  isLoggedIn = false;
-
+  isLoggedIn = true;
   constructor(
     private localStorageService: LocalStorageService,
     private http: HttpClient) {

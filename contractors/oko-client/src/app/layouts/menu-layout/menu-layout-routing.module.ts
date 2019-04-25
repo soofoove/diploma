@@ -12,11 +12,19 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'studentSearch',
+        redirectTo: 'studentInfo',
       },
       {
-        path: 'studentSearch',
-        loadChildren: '../../features/student-search/student-search.module#StudentSearchModule',
+        path: 'studentInfo',
+        loadChildren: '../../features/student-info/student-info.module#StudentInfoModule',
+      },
+      {
+        path: 'registration',
+        loadChildren: '../../features/registration/registration.module#RegistrationModule',
+      },
+      {
+        path: 'search',
+        loadChildren: '../../features/search/search.module#SearchModule'
       }
     ]
   }
