@@ -1,0 +1,69 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.university'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.2.RELEASE'
+}
+
+private static String getClientModuleName(String clientArgumentValue) {
+    final String result
+    if (clientArgumentValue == "oko") {
+        result = ":oko-client"
+    } else if (clientArgumentValue == "smo") {
+        result = ":smo-client"
+    } else {
+        throw new StopExecutionException('Unknown "client" argument value: "' + clientArgumentValue + '". Possible values are: "oko", "smo".')
+    }
+    return result
+}
+
+private static void deleteStaticDirectory() {
+    def staticDirectory = new File('build/resources/main/static')
+    staticDirectory.deleteDir()
+}
+
+if (project.hasProperty('client')) {
+
+    task copyStaticResources(type: Copy) {
+        def clientArgumentValue = project.getProperties()['client']
+        def clientModlueName = getClientModuleName(clientArgumentValue);
+        from(project(clientModlueName).projectDir.absolutePath + '/dist/dimplom-test/') into('build/resources/main/static')
+    }
+
+    def clientArgumentValue = project.getProperties()['client']
+    def clientModuleName = getClientModuleName(clientArgumentValue)
+
+    if (clientArgumentValue == "smo") {
+        print("Building SMO client...")
+        bootJar.dependsOn(clientModuleName + ':npm_run_build')
+    } else if (clientArgumentValue == "oko") {
+        print("Building OKO client...")
+        bootJar.dependsOn(clientModuleName + ':npm_run_build')
+    } else {
+        throw new StopExecutionException('Unknown "client" argument value: "' + clientArgumentValue + '". Possible values are: "oko", "smo".')
+    }
+
+    deleteStaticDirectory()
+    archivesBaseName = project.name + "-" + clientArgumentValue
+    bootJar.dependsOn(copyStaticResources)
+}
