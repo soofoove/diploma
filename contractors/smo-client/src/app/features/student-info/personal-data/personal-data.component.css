@@ -1,0 +1,15 @@
+button{
+    float: right;;
+    margin-left: 5px;
+}
+.btn-link{
+    color:black;
+}
+.block{
+    border:1px solid black;
+    margin-bottom: 5px;
+    padding: 5px
+}
+.form-group{
+    margin-bottom: 5px
+}
