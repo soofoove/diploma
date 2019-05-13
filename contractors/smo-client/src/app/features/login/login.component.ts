@@ -13,6 +13,7 @@ import { User } from 'src/app/interfaces/user.interface';
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public loginSuccess = undefined;
+  public loginInProgress = false;
 
   constructor(
     private authService: AuthService,
@@ -32,13 +33,16 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.loginForm.valid) {
+      this.loginInProgress = true;
       this.authService.auth({
         username: this.loginForm.controls['username'].value,
         password: this.loginForm.controls['password'].value,
       }).subscribe((user: User) => {
+          this.loginInProgress = false;
           this.router.navigate(['/']);
         },
         error => {
+          this.loginInProgress = false;
           this.loginSuccess = false;
         }
       );

@@ -13,6 +13,9 @@ export class LocalStorageService {
   }
 
   getUser(): User {
+    if (localStorage['user'] === undefined) {
+      return null;
+    }
     return JSON.parse(localStorage['user']);
   }
 
