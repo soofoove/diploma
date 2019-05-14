@@ -9,6 +9,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MenuLayoutModule } from './layouts/menu-layout/menu-layout.module';
 import { StudentService } from './services/student/student.service';
+import { httpInterceptorProviders } from './interceptors';
 
 
 
@@ -28,7 +29,7 @@ import { StudentService } from './services/student/student.service';
     MenuLayoutModule,
     AppRoutingModule,
   ],
-  providers: [StudentService],
+  providers: [StudentService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,3 +6,7 @@
 /smo-client/node_modules/
 /oko-client/dist/
 /smo-client/dist/
+/server/out/
+/server/build/
+/gradle/
+/build/

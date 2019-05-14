@@ -15,9 +15,6 @@ export class HttpService {
     environment.apiBaseUrl +
     environment.apiPrefix +
     environment.apiVersion;
-  private httpHeaders = new HttpHeaders({
-    'Authorization': `Bearer ${this.localStorageSerive.getUser().token}`,
-  });
   constructor(private localStorageSerive: LocalStorageService, private http: HttpClient) { }
 
   public get<T>(url: string, paramsObject?: any): Observable<T> {
@@ -27,7 +24,6 @@ export class HttpService {
 
     return this.http.get<T>(`${this.baseUrl}/${url}`, {
       params: paramsObject,
-      headers: this.httpHeaders,
     });
   }
 
@@ -35,25 +31,19 @@ export class HttpService {
     url: string,
     requestBody: any,
   ): Observable<T> {
-    return this.http.post<T>(`${this.baseUrl}/${url}`, requestBody, {
-      headers: this.httpHeaders,
-    });
+    return this.http.post<T>(`${this.baseUrl}/${url}`, requestBody);
   }
 
   public put<T>(
     url: string,
     requestBody: any,
   ): Observable<T> {
-    return this.http.put<T>(`${this.baseUrl}/${url}`, requestBody, {
-      headers: this.httpHeaders,
-    });
+    return this.http.put<T>(`${this.baseUrl}/${url}`, requestBody);
   }
 
   public delete<T>(
     url: string,
   ): Observable<T> {
-    return this.http.delete<T>(`${this.baseUrl}/${url}`, {
-      headers: this.httpHeaders,
-    });
+    return this.http.delete<T>(`${this.baseUrl}/${url}`);
   }
 }
