@@ -4,14 +4,16 @@
       <li class="nav-item">
         <a class="nav-link" routerLink = "/registration" routerLinkActive = "active">Реєстрація абітурієнтів</a>
       </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink = "/studentInfo" routerLinkActive = "active">Робота з картками(абітурієнт)</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink = "/search" routerLinkActive = "active">Робота з картками(студент)</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="#" routerLinkActive = "active">Робота з архівом</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" routerLinkActive = "active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Робота с картками</a>
+        <div class="dropdown-menu">
+          <a class="nav-link dropdown-item" routerLink = "/search" routerLinkActive = "active">Абітурієнт</a>
+          <a class="nav-link dropdown-item" routerLink = "/studentInfo" routerLinkActive = "active">Студент</a>
+          <a class="nav-link dropdown-item" routerLink = "/search" routerLinkActive = "active">Переведення</a>
+          <div class="dropdown-divider"></div>
+          <a class="nav-link dropdown-item" routerLink="#" routerLinkActive = "active">Архів</a>
+        </div>
       </li>
 
     </ul>
