@@ -45,7 +45,7 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="dateOfBirth">Дата народження:</label>
-            <input class="form-control" id="dateOfBirth" type="date" name="dateOfBirth" value="{{student.student.dateOfBirth}}">
+            <input class="form-control" id="dateOfBirth" type="date" name="dateOfBirth" value="{{unixTimeToString(student.student.dateOfBirth)}}">
           </div>
 
         </div>
@@ -134,14 +134,14 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="dataEnter">Дата зачислення:</label>
-            <input class="form-control" type="text" name="dataEnter" value="{{student.contract.dateIn}}">
+            <input class="form-control" type="date" name="dataEnter" value="{{unixTimeToString(student.contract.dateIn)}}">
           </div>
         </div>
 
         <div class="col-sm">
           <div class="form-group">
             <label for="dataEnd">Планована дата закінчення:</label>
-            <input class="form-control" type="date" name="dataEnd">
+            <input class="form-control" type="date" name="dataEnd" value="{{unixTimeToString(student.contract.planDateOut)}}">
           </div>
         </div>
       </div>
@@ -150,14 +150,14 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="numberOfOrder">Наказ №:</label>
-            <input class="form-control" type="tel" name="numberOfOrder">
+            <input class="form-control" type="tel" name="numberOfOrder" value="{{enrollmentOrder.orderNumber}}">
           </div>
         </div>
 
         <div class="col-sm">
           <div class="form-group">
             <label for="dateOrder">Дата наказу:</label>
-            <input class="form-control" type="date" name="dateOrder">
+            <input class="form-control" type="date" name="dateOrder" value="{{unixTimeToString(enrollmentOrder.orderDate)}}">
           </div>
         </div>
 

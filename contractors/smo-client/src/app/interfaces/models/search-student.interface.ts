@@ -10,7 +10,7 @@ import { EducationLanguageInterface } from './education-language.interface';
 export interface SearchStudentInterface {
     surname?: string;
     name?: string;
-    dataOfBirth?: Date;
+    dataOfBirth?: number;
     nationality?: string;
     country?: CountryInterface;
     contractNumber?: string;

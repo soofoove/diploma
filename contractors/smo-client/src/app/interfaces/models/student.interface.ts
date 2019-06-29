@@ -5,6 +5,6 @@ export interface StudentInterface {
     surname: string;
     name: string;
     middleName: string;
-    dateOfBirth: Date;
+    dateOfBirth: number;
     country: CountryInterface;
 }

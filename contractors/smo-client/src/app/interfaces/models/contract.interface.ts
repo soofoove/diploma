@@ -24,7 +24,7 @@ export interface ContractInterface {
     educationForm: EducationFormInterface;
     arrivalLine: ArrivalLineInterface;
     payer: string;
-    dateIn: Date;
+    dateIn: number;
     planDateOut: Date;
     course: number;
     educationLanguage: EducationLanguageInterface;
