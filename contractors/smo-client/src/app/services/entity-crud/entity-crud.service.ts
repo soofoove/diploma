@@ -9,6 +9,7 @@ import { CountryInterface } from 'src/app/interfaces/models/country.interface';
 import { EducationLanguageInterface } from 'src/app/interfaces/models/education-language.interface';
 import { EducationFormInterface } from 'src/app/interfaces/models/education-form.interface';
 import { ArrivalLineInterface } from 'src/app/interfaces/models/arrival-line.interface';
+import { DopStudentInterface } from 'src/app/interfaces/dop-student.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,9 @@ export class EntityCrudService {
 
   public getAllArrivalLines(): Observable<ArrivalLineInterface[]> {
     return this.http.get('entity/arrival_lines', {});
+  }
+
+  public getDopStudentByContractId(contractId: number): Observable<DopStudentInterface> {
+    return this.http.get(`entity/dop_students?contract_id=${contractId}`, {});
   }
 }

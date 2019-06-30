@@ -11,7 +11,7 @@ import { PaymentFormInterface } from './payment-form.interface';
 import { DirectionInterface } from './direction.interface';
 
 export interface ContractInterface {
-    id: string;
+    id: number;
     student: StudentInterface;
     contractType: ContractTypeInterface;
     contractDate: Date;
