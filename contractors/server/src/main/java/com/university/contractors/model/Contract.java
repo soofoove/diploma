@@ -1,6 +1,7 @@
 package com.university.contractors.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 
 import javax.persistence.*;
@@ -82,6 +83,7 @@ public class Contract implements IdEntity<Long> {
     @JoinColumn(name = "ref_direction")
     private Direction direction;
 
+    // @JsonProperty("isBudget")
     private Boolean isBudget;
     private Boolean isActive;
 
@@ -263,19 +265,19 @@ public class Contract implements IdEntity<Long> {
         this.direction = direction;
     }
 
-    public Boolean getBudget() {
+    public Boolean getIsBudget() {
         return isBudget;
     }
 
-    public void setBudget(Boolean budget) {
+    public void setIsBudget(Boolean budget) {
         isBudget = budget;
     }
 
-    public Boolean getActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
+    public void setIsActive(Boolean active) {
         isActive = active;
     }
 

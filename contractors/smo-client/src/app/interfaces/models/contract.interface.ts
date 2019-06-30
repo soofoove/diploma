@@ -33,6 +33,6 @@ export interface ContractInterface {
     comment: string;
     usualPaymentForm: PaymentFormInterface;
     direction: DirectionInterface;
-    budget: boolean;
-    active: boolean;
+    isBudget: boolean;
+    isActive: boolean;
 }

@@ -318,7 +318,7 @@
             <td>{{ student.contract.contractNumber }}</td>
             <td>{{ unixTimeToString(student.contract.contractDate) }}</td>
             <td>{{ unixTimeToString(student.contract.planDateOut) }}</td>
-            <ng-container *ngIf="student.contract.active; else elseTemplate">
+            <ng-container *ngIf="student.contract.isActive; else elseTemplate">
               <td>Активний</td>
             </ng-container>
             <ng-template #elseTemplate>
