@@ -16,6 +16,7 @@ import { EducationFormInterface } from 'src/app/interfaces/models/education-form
 import { ArrivalLineInterface } from 'src/app/interfaces/models/arrival-line.interface';
 import { StudentService } from 'src/app/services/student/student.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -53,7 +54,10 @@ export class SearchComponent implements OnInit {
     this.educationLanguage$ = this.entities.getAllEducationLanguages();
     this.educationForms$ = this.entities.getAllEducationForms();
     this.arrivalLines$ = this.entities.getAllArrivalLines();
-    this.countries$ = this.entities.getAllCountries();
+    this.countries$ = this.entities.getAllCountries().pipe(map(value => value.sort((a, b) => {
+      if (a.countryNameUa > b.countryNameUa) { return 1; }
+      return -1;
+    })));
     this.searchResult$ = this.searchService.search({});
   }
 
@@ -80,6 +84,7 @@ export class SearchComponent implements OnInit {
     if (searchParams.contractNumber === '') {
       delete searchParams.contractNumber;
     }
+    searchParams.dataOfBirth = this.stringToUnixTime(this.searchForm.value.dataOfBirth);
     console.log(searchParams);
     this.searchResult$ = this.searchService.search(searchParams);
   }
@@ -99,6 +104,10 @@ export class SearchComponent implements OnInit {
     this.studentService.currentStudent = value;
 
     this.router.navigate(['/studentInfo']);
+  }
+
+  stringToUnixTime(date: string) {
+    return new Date(date).setHours(0).valueOf();
   }
 
 }

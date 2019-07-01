@@ -6,7 +6,7 @@
     </div>
     <div class="col">
       <label for="numberOfContract">№:</label>
-      <input id="numberOfContract">
+      <input id="numberOfContract" value="{{(dopStudent$ | async)?.contract.contractNumber}}">
     </div>
   </div>
 
@@ -17,7 +17,7 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="nameOnEnglish">Ім'я англійською мовою:</label>
-            <input class="form-control" type="text" name="nameOnEnglish" #nameOnEnglish="ngModel" ngModel>
+            <input class="form-control" type="text" name="nameOnEnglish" value="{{(dopStudent$ | async)?.englishName}}">
           </div>
         </div>
       </div>
@@ -25,13 +25,13 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="dateOfBirth">Дата народження:</label>
-            <input class="form-control" type="date" name="dateOfBirth" #dateOfBirth="ngModel" ngModel>
+            <input class="form-control" type="date" name="dateOfBirth">
           </div>
         </div>
         <div class="col-sm">
           <div class="form-group">
             <label for="gender">Стать:</label>
-            <input class="form-control" type="text" name="gender" #gender="ngModel" ngModel>
+            <input class="form-control" type="text" name="gender" value="{{(dopStudent$ | async)?.sex}}">
           </div>
         </div>
       </div>
@@ -43,13 +43,13 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="numberOfPassport">Паспорт №:</label>
-            <input class="form-control" type="text" name="numberOfPassport" #numberOfPassport="ngModel" ngModel>
+            <input class="form-control" type="text" name="numberOfPassport">
           </div>
         </div>
         <div class="col-sm">
           <div class="form-group">
             <label for="adress">Адреса:</label>
-            <input class="form-control" type="text" name="adress" #adress="ngModel" ngModel>
+            <input class="form-control" type="text" name="adress">
           </div>
         </div>
       </div>
@@ -58,14 +58,14 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="dateOfIssue">Дата видачі:</label>
-            <input class="form-control" type="date" name="dateOfIssue" #dateOfIssue="ngModel" ngModel>
+            <input class="form-control" type="date" name="dateOfIssue">
           </div>
         </div>
 
         <div class="col-sm">
           <div class="form-group">
             <label for="validity">Термін дії:</label>
-            <input class="form-control" type="date" name="validity" #validity="ngModel" ngModel>
+            <input class="form-control" type="date" name="validity">
           </div>
         </div>
       </div>
@@ -77,13 +77,13 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="numberOfReg">Реєстрація №:</label>
-            <input class="form-control" type="text" name="numberOfReg" #numberOfReg="ngModel" ngModel>
+            <input class="form-control" type="text" name="numberOfReg">
           </div>
         </div>
         <div class="col-sm">
           <div class="form-group">
             <label for="validityOfReg">Термін дії реєстрації:</label>
-            <input class="form-control" type="date" name="validityOfReg" #validityOfReg="ngModel" ngModel>
+            <input class="form-control" type="date" name="validityOfReg">
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="placeOfReg">Місце колишньої реєстрації:</label>
-            <input class="form-control" type="text" name="placeOfReg" #placeOfReg="ngModel" ngModel>
+            <input class="form-control" type="text" name="placeOfReg">
           </div>
         </div>
       </div>
@@ -104,21 +104,21 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="numberOfVisa">Віза №:</label>
-            <input class="form-control" type="text" name="numberOfVisa" #numberOfVisa="ngModel" ngModel>
+            <input class="form-control" type="text" name="numberOfVisa">
           </div>
         </div>
 
         <div class="col-sm">
           <div class="form-group">
             <label for="dateOfVisaIssue">Дата видачі візи:</label>
-            <input class="form-control" type="date" name="dateOfVisaIssue" #dateOfVisaIssue="ngModel" ngModel>
+            <input class="form-control" type="date" name="dateOfVisaIssue">
           </div>
         </div>
 
         <div class="col-sm">
           <div class="form-group">
             <label for="validityOfVisa">Термін дії візи:</label>
-            <input class="form-control" type="date" name="validityOfVisa" #validityOfVisa="ngModel" ngModel>
+            <input class="form-control" type="date" name="validityOfVisa">
           </div>
         </div>
       </div>
@@ -130,13 +130,13 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="frontier">Межа:</label>
-            <input class="form-control" type="text" name="frontier" #frontier="ngModel" ngModel>
+            <input class="form-control" type="text" name="frontier">
           </div>
         </div>
         <div class="col-sm">
           <div class="form-group">
             <label for="dateOfArrive">Дата прибуття:</label>
-            <input class="form-control" type="date" name="dateOfArrive" #dateOfArrive="ngModel" ngModel>
+            <input class="form-control" type="date" name="dateOfArrive">
           </div>
         </div>
       </div>
@@ -145,14 +145,14 @@
         <div class="col-8">
           <div class="form-group">
             <label for="adressOfResidence">Адреса проживання:</label>
-            <input class="form-control" type="text" name="adressOfResidence" #adressOfResidence="ngModel" ngModel>
+            <input class="form-control" type="text" name="adressOfResidence">
           </div>
         </div>
 
         <div class="col-2">
           <div class="form-group">
             <label for="numberOfRoom">Кімната:</label>
-            <input class="form-control" type="number" name="numberOfRoom" #numberOfRoom="ngModel" ngModel>
+            <input class="form-control" type="number" name="numberOfRoom">
           </div>
         </div>
       </div>
@@ -164,13 +164,13 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="numberOfInsurance">Медичне страхування №:</label>
-            <input class="form-control" type="text" name="numberOfInsurance" #numberOfInsurance="ngModel" ngModel>
+            <input class="form-control" type="text" name="numberOfInsurance">
           </div>
         </div>
         <div class="col-sm">
           <div class="form-group">
             <label for="validityOfInsurance">Термін дії медичного страхування:</label>
-            <input class="form-control" type="date" name="validityOfInsurance" #validityOfInsurance="ngModel" ngModel>
+            <input class="form-control" type="date" name="validityOfInsurance">
           </div>
         </div>
       </div>
@@ -179,14 +179,14 @@
         <div class="col-4">
           <div class="form-group">
             <label for="licenseCode">Код за ліцензією:</label>
-            <input class="form-control" type="text" name="icenseCode" #icenseCode="ngModel" ngModel>
+            <input class="form-control" type="text" name="icenseCode">
           </div>
         </div>
 
         <div class="col-7">
           <div class="form-group">
             <label for="addInfo">Додаткова інформація:</label>
-            <input class="form-control" type="text" name="addInfo" #addInfo="ngModel" ngModel>
+            <input class="form-control" type="text" name="addInfo">
           </div>
         </div>
       </div>

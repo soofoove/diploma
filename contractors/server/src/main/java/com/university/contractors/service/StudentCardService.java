@@ -43,7 +43,7 @@ public class StudentCardService {
         studentContracts.ifPresent((studentCard::setContracts)); // set all contracts
 
         studentContracts.orElse(Lists.newArrayList()).stream() // set current contract
-                .filter(Contract::getActive)
+                .filter(Contract::getIsActive)
                 .findFirst()
                 .ifPresent(studentCard::setCurrentContract);
 

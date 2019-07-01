@@ -11,7 +11,7 @@ import { PaymentFormInterface } from './payment-form.interface';
 import { DirectionInterface } from './direction.interface';
 
 export interface ContractInterface {
-    id: string;
+    id: number;
     student: StudentInterface;
     contractType: ContractTypeInterface;
     contractDate: Date;
@@ -24,7 +24,7 @@ export interface ContractInterface {
     educationForm: EducationFormInterface;
     arrivalLine: ArrivalLineInterface;
     payer: string;
-    dateIn: Date;
+    dateIn: number;
     planDateOut: Date;
     course: number;
     educationLanguage: EducationLanguageInterface;
